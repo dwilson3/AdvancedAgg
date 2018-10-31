@@ -52,6 +52,13 @@ db.employees.aggregate(
 var avgSalary= db.employees.aggregate(
 [ 
     {
+    salary: {$avg: "$salaries.salary"}
+    }
+]);
+
+db.employees.aggregate(
+[ 
+    {
         $sort:{"emp_no": 1}
     },
     
@@ -70,7 +77,7 @@ var avgSalary= db.employees.aggregate(
         }
     },
     {
-        $sort:{salary:-1}
+        $sort:{salary:1}
     }
     ,
     {
